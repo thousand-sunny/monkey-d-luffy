@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pub.strawhat.luffy.dao.sys.UserMapper">
+
+	<resultMap type="pub.strawhat.luffy.model.sys.UserVO" id="userMap">
+		<id property="id" column="id" />
+		<result property="username" column="username" />
+		<result property="password" column="password" />
+		<result property="status" column="status" />
+		<collection property="roleList" ofType="pub.strawhat.luffy.model.sys.RoleVO">
+			<result property="roleName" column="role_name" />
+			<collection property="permissionList"
+				ofType="pub.strawhat.luffy.model.sys.PermissionVO">
+				<result property="resourceCode" column="resource_code" />
+				<result property="resourceName" column="resource_name" />
+				<result property="operationCode" column="operation_code" />
+				<result property="operationName" column="operation_name" />
+			</collection>
+		</collection>
+	</resultMap>
+
+	<select id="findAuthUserByName" parameterType="string" resultMap="userMap">
+		SELECT u.id, u.username, u.`password`, u.`status`, r.role_name, p.resource_code, p.resource_name, p.operation_code, p.operation_name
+			FROM sys_user_t u, sys_role_t r, sys_user_role_t ur, sys_permission_t p, sys_role_permission_t rp
+			WHERE u.id = ur.user_id
+				AND ur.role_id = r.id
+				AND r.id = rp.role_id
+				AND rp.permission_id = p.id
+				AND username = #{username}
+	</select>
+
+</mapper>

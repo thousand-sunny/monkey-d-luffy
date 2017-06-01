@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+
+    <title>H+ 后台主题UI框架 - 主页</title>
+
+    <meta name="keywords" content="H+后台主题,后台bootstrap框架,会员中心主题,后台HTML,响应式后台">
+    <meta name="description" content="H+是一个完全响应式，基于Bootstrap3最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术">
+
+    <!--[if lt IE 9]>
+    <meta http-equiv="refresh" content="0;error/ie.html" />
+    <![endif]-->
+
+    <link rel="shortcut icon" href="favicon.ico"> 
+    <link th:href="@{css/bootstrap.min.css?v=3.3.6}" rel="stylesheet">
+    <link th:href="@{css/font-awesome.min.css?v=4.4.0}" rel="stylesheet">
+    <link th:href="@{css/animate.css}" rel="stylesheet">
+    <link th:href="@{css/style.css?v=4.1.0}" rel="stylesheet">
+    
+</head>
+
+<body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden">
+    <div id="wrapper">
+        <!--左侧导航开始-->
+        <div th:replace="include/menu :: #layout-menu"></div>
+        <!--左侧导航结束-->
+        <!--右侧部分开始-->
+        <div id="page-wrapper" class="gray-bg dashbard-1">
+            <div th:replace="include/common :: #layout-shortcut"></div>
+            <div th:replace="include/common :: #layout-taskbar"></div>
+            
+            <div class="row J_mainContent" id="content-main">
+                <iframe class="J_iframe" name="iframe0" width="100%" height="100%" th:src="@{home}" frameborder="0" data-id="index_v1.html" seamless></iframe>
+            </div>
+            <div th:replace="include/common :: #layout-footer"></div>
+        </div>
+        <!--右侧部分结束-->
+        <!--右侧边栏开始-->
+        <div th:replace="include/settings :: #right-sidebar"></div>
+        <!--右侧边栏结束-->
+        <!--mini聊天窗口开始-->
+        <div th:replace="include/chat :: #mini-chat-box"></div>
+        <div id="small-chat">
+            <span class="badge badge-warning pull-right">5</span>
+            <a class="open-small-chat">
+                <i class="fa fa-comments"></i>
+
+            </a>
+        </div>
+        <!--mini聊天窗口结束-->
+    </div>
+
+    <!-- 全局js -->
+    <script th:src="@{js/jquery.min.js?v=2.1.4}"></script>
+    <script th:src="@{js/bootstrap.min.js?v=3.3.6}"></script>
+    <script th:src="@{js/plugins/metisMenu/jquery.metisMenu.js}"></script>
+    <script th:src="@{js/plugins/slimscroll/jquery.slimscroll.min.js}"></script>
+    <script th:src="@{js/plugins/layer/layer.min.js}"></script>
+    <!-- 自定义js -->
+    <script th:src="@{js/hplus.js?v=4.1.0}" ></script>
+    <script type="text/javascript" th:src="@{js/contabs.js}"></script>
+    <!-- 第三方插件 -->
+    <script th:src="@{js/plugins/pace/pace.min.js}"></script>
+
+</body>
+
+</html>

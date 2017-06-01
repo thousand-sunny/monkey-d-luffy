@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>H+ 后台主题UI框架 - 空白页</title>
+<meta name="keywords" content="H+后台主题,后台bootstrap框架,会员中心主题,后台HTML,响应式后台">
+<meta name="description"
+	content="H+是一个完全响应式，基于Bootstrap3最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术">
+
+<link th:href="@{/css/bootstrap.min.css?v=3.3.6}" rel="stylesheet">
+<link th:href="@{/css/font-awesome.min.css?v=4.4.0}" rel="stylesheet">
+<link th:href="@{/css/plugins/bootstrap-table/bootstrap-table.min.css}"
+	rel="stylesheet">
+<link th:href="@{/css/animate.css}" rel="stylesheet">
+<link th:href="@{/css/style.css?v=4.1.0}" rel="stylesheet">
+
+</head>
+
+<body class="gray-bg">
+	<div class="row wrapper border-bottom white-bg page-heading">
+		<div class="col-sm-4">
+			<h2>标题</h2>
+			<ol class="breadcrumb">
+				<li><a th:href="@{/index.html}" target="_top">主页</a></li>
+				<li><strong>包屑导航</strong></li>
+				<li><strong>包屑导航</strong></li>
+			</ol>
+		</div>
+		<div class="col-sm-8">
+			<div class="title-action">
+				<a href="empty_page.html" class="btn btn-primary">活动区域</a>
+			</div>
+		</div>
+	</div>
+	<div class="wrapper wrapper-content animated fadeInRight">
+		<div class="ibox-content">
+			<form name="searchForm">
+				<div class="row form-body form-horizontal m-t">
+					<div class="col-md-6 droppable sortable ui-droppable ui-sortable"
+						style="">
+						<div class="form-group draggable ui-draggable dropped"
+							style="position: static;">
+							<label class="col-sm-3 control-label">用户名：</label>
+							<div class="col-sm-9">
+								<input type="text" name="username" class="form-control"
+									placeholder="请输入用户名">
+							</div>
+						</div>
+						<div class="form-group draggable ui-draggable dropped"
+							style="position: static;">
+							<label class="col-sm-3 control-label">真实姓名：</label>
+							<div class="col-sm-9">
+								<input type="text" name="realName" class="form-control"
+									placeholder="请输入真实姓名">
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 droppable sortable ui-droppable ui-sortable"
+						style="">
+						<div class="form-group draggable ui-draggable dropped"
+							style="position: static;">
+							<label class="col-sm-3 control-label">邮箱：</label>
+							<div class="col-sm-9">
+								<input type="text" name="email" class="form-control"
+									placeholder="请输入邮箱">
+							</div>
+						</div>
+						<div class="form-group draggable ui-draggable dropped"
+							style="position: static;">
+							<label class="col-sm-3 control-label">手机号：</label>
+							<div class="col-sm-9">
+								<input type="text" name="moblie" class="form-control"
+									placeholder="请输入手机号">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-12 col-sm-offset-6">
+							<button id="searchBtn" class="btn btn-primary" type="button">搜 索</button>
+							<button class="btn btn-white" type="reset">重 置</button>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<div class="wrapper wrapper-content animated fadeInRight">
+		<div class="ibox-content">
+			<div class="row row-lg">
+				<div class="col-sm-12">
+					<div class="btn-group hidden-xs" id="userListToolbar" role="group">
+						<button id="addBtn" type="button" class="btn btn-outline btn-default">
+							<i class="glyphicon glyphicon-plus" aria-hidden="true"></i>
+						</button>
+						<button type="button" class="btn btn-outline btn-default">
+							<i class="glyphicon glyphicon-heart" aria-hidden="true"></i>
+						</button>
+						<button type="button" class="btn btn-outline btn-default">
+							<i class="glyphicon glyphicon-trash" aria-hidden="true"></i>
+						</button>
+					</div>
+					<table id="userListTable" data-toggle="table" data-mobile-responsive="true"
+						data-height="400">
+						<thead>
+							<tr>
+								<th data-field="state" data-checkbox="true"></th>
+								<th data-field="id">ID</th>
+								<th data-field="username">用户名</th>
+								<th data-field="realName">真实姓名</th>
+								<th data-field="email">邮箱</th>
+								<th data-field="mobile">手机</th>
+							</tr>
+						</thead>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="modal inmodal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+	    <div class="modal-dialog modal-lg">
+	        <div class="modal-content">
+	            <div class="modal-header">
+	                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span>
+	                </button>
+	                <h5 class="modal-title">编辑用户信息</h5>
+                </div>
+                <div class="modal-body">
+                	<form id="userForm">
+                	<div class="row row-lg">
+                    <div class="col-md-12">
+					    <div class="form-group">
+					        <label class="col-sm-3 control-label">用户名：</label>
+					        <div class="col-sm-9">
+					            <input type="text" name="username" class="form-control" placeholder="请输入文本">
+					        </div>
+					    </div>
+					    <div class="form-group">
+					        <label class="col-sm-3 control-label">密码：</label>
+					        <div class="col-sm-9">
+					            <input type="password" class="form-control" name="password" placeholder="请输入密码">
+					        </div>
+					    </div>
+					    <div class="form-group">
+					        <label class="col-sm-3 control-label">真实姓名：</label>
+					        <div class="col-sm-9">
+					            <input type="text" name="realName" class="form-control" placeholder="请输入文本">
+					
+					        </div>
+					    </div>
+					    <div class="form-group">
+					        <label class="col-sm-3 control-label">手机：</label>
+					        <div class="col-sm-9">
+					            <input type="text" name="mobile" class="form-control" placeholder="请输入文本">
+					
+					        </div>
+					    </div>
+					    <div class="form-group">
+					        <label class="col-sm-3 control-label">邮箱：</label>
+					        <div class="col-sm-9">
+					            <input type="text" name="email" class="form-control" value="234" placeholder="请输入文本">
+					
+					        </div>
+					    </div>
+					    <div class="form-group">
+					        <label class="col-sm-3 control-label">状态：</label>
+					        <div class="col-sm-9">
+					            <label class="control-label">有效</label>
+					        </div>
+					    </div>
+					</div>
+					</div>
+					</form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+                    <button type="button" id="saveUserBtn" class="btn btn-primary">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	<!-- 全局js -->
+	<script th:src="@{/js/jquery.min.js?v=2.1.4}"></script>
+	<script th:src="@{/js/bootstrap.min.js?v=3.3.6}"></script>
+	<!-- 自定义js -->
+	<script th:src="@{/js/content.js?v=1.0.0}"></script>
+	<!-- Bootstrap table -->
+	<script th:src="@{/js/plugins/bootstrap-table/bootstrap-table.min.js}"></script>
+	<script
+		th:src="@{/js/plugins/bootstrap-table/bootstrap-table-mobile.min.js}"></script>
+	<script
+		th:src="@{/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js}"></script>
+	<script th:src="@{/js/users/userlist.js}"></script>
+
+</body>
+
+</html>
